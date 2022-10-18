@@ -59,7 +59,6 @@ RSpec.describe do
 
       expect(cell_1.render).to eq(".")
 
-    require 'pry' ;binding.pry
     end
   end
 end
