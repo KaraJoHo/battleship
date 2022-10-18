@@ -30,4 +30,27 @@ RSpec.describe do
       #require 'pry' ;binding.pry
     end
   end
+
+  describe '#fired_upon?' do
+    it 'will return true or false if the ship was fired upon' do
+      cell = Cell.new("B4")
+      cruiser = Ship.new("Cruiser", 3)
+      cell.place_ship(cruiser)
+
+      expect(cell.fired_upon?).to eq(false)
+    end
+  end
+
+  describe '#fire_upon' do
+    it 'will reduce the cell health by 1' do
+      cell = Cell.new("B4")
+      cruiser = Ship.new("Cruiser", 3)
+      cell.place_ship(cruiser)
+      cell.fire_upon
+
+      expect(cell.ship.health).to eq(2)
+
+      #require 'pry' ;binding.pry
+    end
+  end
 end
