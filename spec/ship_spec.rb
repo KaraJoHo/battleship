@@ -7,8 +7,6 @@ RSpec.describe Ship do
 
       cruiser = Ship.new("Cruiser", 3)
 
-      #require 'pry' ;binding.pry
-
       expect(cruiser).to be_a(Ship)
 
     end
@@ -39,9 +37,11 @@ RSpec.describe Ship do
   describe '#hit' do
     it 'will lower the ships health if hit' do
       cruiser = Ship.new("Cruiser", 3)
-      
+
       cruiser.hit
       expect(cruiser.health).to eq(2)
+      #require 'pry' ;binding.pry
+
     end
   end
 end
