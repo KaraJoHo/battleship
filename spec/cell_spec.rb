@@ -50,7 +50,16 @@ RSpec.describe do
 
       expect(cell.ship.health).to eq(2)
 
-      #require 'pry' ;binding.pry
+    end
+  end
+
+  describe '#render' do
+    it 'assign the cell hit or miss strings' do
+      cell_1 = Cell.new("B4")
+
+      expect(cell_1.render).to eq(".")
+
+    require 'pry' ;binding.pry
     end
   end
 end

@@ -9,7 +9,7 @@ class Cell
   end
 
   def empty?
-    if ship == nil
+    if @ship == nil
       true
     else
       false
@@ -29,9 +29,23 @@ class Cell
   end
 
   def fire_upon
-    if @ship.hit || empty?
+    if empty? || @ship.hit
       @cell_health -= 1
       #returns 0 in pry
+    end
+  end
+
+  def render
+    if empty? == true && @cell_health == 1
+      "."
+    elsif empty? == false && @cell_health == 1
+      "S"
+    elsif empty? == true && @cell_health == 0
+      "M"
+    elsif @ship.hit == true
+      "H"
+    elsif @ship.sunk? == true
+      "X"
     end
   end
 end
