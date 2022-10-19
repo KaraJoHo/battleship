@@ -20,7 +20,14 @@ RSpec.describe do
             # expect(board.cells.cell_1).to be_a(Cell)
         
         end 
-
     end 
+    describe '#validate_coordinate?' do
+        it 'will tell us if the coordinate has a valid spot on the board' do 
+            board = Board.new
+            expect(board.validate_coordinate?("A1")).to eq(true)
+
+            expect(board.validate_coordinate?("A5")).to eq(false)
+        end 
+    end
 end  
         
