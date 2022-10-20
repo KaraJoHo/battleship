@@ -21,6 +21,7 @@ RSpec.describe do
         
         end 
     end 
+
     describe '#validate_coordinate?' do
         it 'will tell us if the coordinate has a valid spot on the board' do 
             board = Board.new
@@ -29,5 +30,28 @@ RSpec.describe do
             expect(board.validate_coordinate?("A5")).to eq(false)
         end 
     end
+
+    describe '#valid_placement?' do
+        it 'will tell us if the coordinates inputted are a valid placement for a ship' do
+            board = Board.new
+            cruiser = Ship.new("Cruiser", 3)
+            submarine = Ship.new("Submarine", 2)
+            
+            expect(board.valid_placement?(cruiser, ["A1", "A2"])).to eq(false)
+            expect(board.valid_placement?(submarine, ["A2", "A3", "A4"])).to eq(false)
+        end
+
+        it 'will check to see if coords are in consecutive order' do 
+            board = Board.new
+            cruiser = Ship.new("Cruiser", 3)
+            submarine = Ship.new("Submarine", 2)
+            
+
+            expect(board.valid_placement?(cruiser, ["A1", "A2", "A4"])).to eq(false)
+        end 
+            
+
+    end
+
 end  
         

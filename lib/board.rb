@@ -1,5 +1,5 @@
 class Board
-    attr_reader :cells
+    attr_reader :cells, :range_array_x, :x_coord_range_array
     def initialize 
         @cells = {
             "A1" => cell_1 = Cell.new("A1"),
@@ -28,5 +28,47 @@ class Board
             false
         end 
     end 
+
+    def valid_placement?(ship, coordinates)
+        # range_array_y = cells.keys.to_a
+        # range_array_y.map do|coord|
+        #     coord.chars()[0]
+        #     # require 'pry'; binding.pry
+        # end 
+        # @range_array_x = @cells.keys.to_a
+        # @x_coord_range_array = @range_array_x.map do|coord|
+        #     coord.chars()[1]
+        # end 
+        
+        xcoordinate = coordinates.map do|coord|
+            coord.chars()[1]
+            # require 'pry'; binding.pry
+
+        end 
+        ycoordinate = coordinates.map do|coord|
+            coord.chars()[0]
+        end 
+       
+        valid_range_x = []
+        valid_range_y = []
+        valid_x = (1..4).each_cons(ship.length) { |range_array_x| valid_range_x << valid_x } 
+        valid_y = ("A".."D").each_cons(ship.length) {|range_array_y| valid_range_y << valid_x}
+        
+
+        if ship.length == coordinates.length 
+        
+            xcoordinate == valid_range_x[0] || valid_range_x[1]
+            ycoordinate == valid_range_y[0] || valid_range_y[1]
+
+          true
+
+         else 
+            false
+         end 
+    end 
+
+
+
+    
 
 end 
