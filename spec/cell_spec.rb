@@ -47,7 +47,6 @@ RSpec.describe do
       cruiser = Ship.new("Cruiser", 3)
       cell.place_ship(cruiser)
       cell.fire_upon
-
       expect(cell.ship.health).to eq(2)
 
     end

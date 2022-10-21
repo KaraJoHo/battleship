@@ -1,9 +1,10 @@
 
 
 class Cell
-  attr_reader :coordinate, :ship, :cell_health
+  attr_reader :coordinate, :ship, :cell_health, :xcoordinate, :ycoordinate
   def initialize(coordinate)
     @coordinate = coordinate
+
     @ship = nil
     @cell_health = 1
   end

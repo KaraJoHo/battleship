@@ -30,39 +30,36 @@ class Board
     end 
 
     def valid_placement?(ship, coordinates)
-        # range_array_y = cells.keys.to_a
-        # range_array_y.map do|coord|
-        #     coord.chars()[0]
-        #     # require 'pry'; binding.pry
-        # end 
-        # @range_array_x = @cells.keys.to_a
-        # @x_coord_range_array = @range_array_x.map do|coord|
-        #     coord.chars()[1]
-        # end 
+        range_array_y = ("A".."D").to_a
         
-        xcoordinate = coordinates.map do|coord|
+        range_array_x = ("1".."4").to_a
+        
+        xcoordinates = coordinates.map do|coord|
             coord.chars()[1]
-            # require 'pry'; binding.pry
-
         end 
-        ycoordinate = coordinates.map do|coord|
+
+        ycoordinates = coordinates.map do|coord|
             coord.chars()[0]
         end 
        
         valid_range_x = []
         valid_range_y = []
-        valid_x = (1..4).each_cons(ship.length) { |range_array_x| valid_range_x << valid_x } 
-        valid_y = ("A".."D").each_cons(ship.length) {|range_array_y| valid_range_y << valid_x}
+        ("1".."4").each_cons(ship.length) { |range_array_x| valid_range_x << range_array_x } 
+        ("A".."D").each_cons(ship.length) { |range_array_y| valid_range_y << range_array_y}
+
+        all_letters_same = []
+        ycoordinates.all? { |letter| if letter == ycoordinates[0] 
+                                all_letters_same << letter end }
+        all_numbers_same = []
+        xcoordinates.all? { |num| if num == xcoordinates[0]
+                                 all_numbers_same << num end }
         
+        # require 'pry'; binding.pry
+        if ship.length == coordinates.length
+            valid_range_x.include?(xcoordinates) || valid_range_y.include?(ycoordinates)
+            all_letters_same.length == ship.length || all_numbers_same.length == ship.length
 
-        if ship.length == coordinates.length 
-        
-            xcoordinate == valid_range_x[0] || valid_range_x[1]
-            ycoordinate == valid_range_y[0] || valid_range_y[1]
-
-          true
-
-         else 
+        else 
             false
          end 
     end 
