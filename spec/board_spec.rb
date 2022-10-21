@@ -67,8 +67,23 @@ RSpec.describe do
         cell_3 = board.cells["A3"]
         board.place(cruiser, ["A1", "A2", "A3"])
 
-        require 'pry' ;binding.pry
+
         expect(cell_3.empty?).to eq(false)
+      end
+      it 'will check that the ships dont overlap' do
+        board = Board.new
+        cruiser = Ship.new("Cruiser", 3)
+        cell_1 = board.cells["A1"]
+        cell_2 = board.cells["A2"]
+        cell_3 = board.cells["A3"]
+        board.place(cruiser, ["A1", "A2", "A3"])
+        submarine = Ship.new("Submarine", 2)
+
+        require 'pry' ;binding.pry
+
+        board.valid_placement?(submarine, ["A1", "B1"])
+        expect(board.valid_placement?(submarine, ["A1", "B1"])).to eq(false)
+
       end
     end
 

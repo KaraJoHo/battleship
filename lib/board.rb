@@ -55,15 +55,26 @@ class Board
         xcoordinates.all? { |num| if num == xcoordinates[0]
                                  all_numbers_same << num end }
 
+        cell_empty_in_board = coordinates.map do |coordinate|
+          cells[coordinate].empty?
+        end
+          #cell_empty_in_board.all? {|bool| bool == true}
+
         # require 'pry'; binding.pry
-        if ship.length == coordinates.length
+        if ship.length == coordinates.length && cell_empty_in_board.all? {|bool| bool == true}
             valid_range_x.include?(xcoordinates) || valid_range_y.include?(ycoordinates)
             all_letters_same.length == ship.length || all_numbers_same.length == ship.length
 
+
+
         else
             false
-         end
+        end
     end
+
+
+
+
 
     def place(ship, coordinates)
 
@@ -72,8 +83,8 @@ class Board
         coordinates.each do |element|
           cells[element].place_ship(ship)
         end
-      end
 
+      end
     end
 
 end
