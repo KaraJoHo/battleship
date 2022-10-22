@@ -73,9 +73,6 @@ class Board
     end
 
 
-
-
-
     def place(ship, coordinates)
 
       if valid_placement?(ship, coordinates) == true
@@ -85,6 +82,68 @@ class Board
         end
 
       end
+    end
+
+    def render
+
+
+        "  1 2 3 4 \n" +
+        "A . . . . \n" +
+        "B . . . . \n" +
+        "C . . . . \n" +
+        "D . . . . \n"
+
+        cell_values = cells.values
+        cell_rendered = cell_values.map do |cell|
+          cell.render
+        end
+        #ehh? = [["  1 2 3 4 \n"], ["A #{cell_rendered} \n"], ["B . . . . \n"], ["C . . . . \n"], ["D . . . . \n"]]
+          # 4 different array w/ cell rendeered for each row
+          # have the row start with letter automatically
+          #array w/ each row cell being rendered and add together
+          #string interpolate...we need arrays
+          # A #{array_name}.to_s
+
+        # rows_array = []
+        # rows = ("A".."D").each_cons(1) {|row| rows_array << row}
+        # row_render = rows_array.each_slice(1).map{ |row| row.join(" ")}.join("\n")
+        # final_render = cell_rendered.each_slice(4).map{ |cell| cell.join(" ")} #.join("\n#{rows}")
+
+        #row_render.to_s + final_render.to_s
+
+        #{}" 1 2 3 4 \n#{final_render}"
+
+        # grid = [[ 1, 2, 3, 4 ],
+        #         [A, ., ., ., .],
+        #         [B, ., ., ., .],
+        #         [C, ., ., ., .],
+        #         [D, ., ., ., .]]
+        #     g1 = [0]
+        #     g2 = [0][0]
+        #     g1.join(" ")
+        #     g1.unshift(g2)
+        #
+        #     grid.shift
+        #     grid.each do |g|
+        #       g2 = g[0]
+        #       g.shift
+        #       g.join(" ")
+        #       g.unshift(g2)
+        #     end
+
+
+
+
+
+        # "A \n B \n C \n D"
+
+         # "  1 2 3 4 \n" +
+         # "A . . . . \n" +
+         # "B . . . . \n" +
+         # "C . . . . \n" +
+         # "D . . . . \n"
+        #we want to place the ship on the board
+        #show the placement with the "S" to representthat there us a ship
     end
 
 end
