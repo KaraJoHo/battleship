@@ -77,17 +77,10 @@ class Board
       coordinates.each do |element|
         cells[element].place_ship(ship)
       end
-
     end
   end
 
   def render(arg = false)
-
-      #cell_values = @cells.values
-
-      # cell_rendered = cell_values.map do |cell|
-      #   cell.render
-      # end
 
     "  1 2 3 4 \n" +
     "A #{@cells["A1"].render} #{@cells["A2"].render} #{@cells["A3"].render} #{@cells["A4"].render} \n" +
@@ -95,29 +88,5 @@ class Board
     "C #{@cells["C1"].render} #{@cells["C2"].render} #{@cells["C3"].render} #{@cells["C4"].render} \n" +
     "D #{@cells["D1"].render} #{@cells["D2"].render} #{@cells["D3"].render} #{@cells["D4"].render} \n"
 
-
-         # first_row = ["  1 2 3 4 \n"]
-         # first_row_render = first_row.map{ |row| row}.join("\n")
-         #
-         # second_row = ["A . . . . \n"]
-         # second_row_render = second_row.map{ |row| row}.join("\n")
-         #
-         # third_row = ["B . . . . \n"]
-         # third_row_render = third_row.map{ |row| row }.join("\n")
-         #
-         # fourth_row = ["C . . . . \n"]
-         # fourth_row_render = fourth_row.map{ |row| row }.join("\n")
-         #
-         # fifth_row = ["D . . . . \n"]
-         # fifth_row_render = fifth_row.map{ |row| row }.join("\n")
-
-                   # grid_rendered = [first_row_render +
-                   # second_row_render +
-                   # third_row_render +
-                   # fourth_row_render +
-                   # fifth_row_render]
-
-
-    end
-
+  end
 end

@@ -91,8 +91,21 @@ RSpec.describe do
         expect(board.render).to eq("  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n")
 
         board.place(cruiser, ["A1", "A2", "A3"])
+
         #require 'pry' ;binding.pry
         expect(board.render).to eq("  1 2 3 4 \nA S S S . \nB . . . . \nC . . . . \nD . . . . \n")
+      end
+
+      it 'will see if it hit a ship' do
+        board = Board.new
+        cruiser = Ship.new("Cruiser", 3)
+
+        board.place(cruiser, ["A1", "A2", "A3"])
+        board.cells["A1"].fire_upon
+        expect(board.render).to eq("  1 2 3 4 \nA H S S . \nB . . . . \nC . . . . \nD . . . . \n")
+
+        board.cells["A2"].fire_upon
+        expect(board.render).to eq("  1 2 3 4 \nA H H S . \nB . . . . \nC . . . . \nD . . . . \n")
       end
     end
 
