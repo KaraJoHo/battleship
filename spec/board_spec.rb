@@ -106,7 +106,8 @@ RSpec.describe do
 
         board.cells["A2"].fire_upon
         expect(board.render).to eq("  1 2 3 4 \nA H H S . \nB . . . . \nC . . . . \nD . . . . \n")
-      end
+      end 
+
     end
 
 end

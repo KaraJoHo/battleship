@@ -44,10 +44,10 @@ class Cell
       "."
       elsif empty? == true && @cell_health == 0
         "M"
-      elsif empty? == false && @cell_health == 0
-        "H"
       elsif empty? == false && @ship.sunk? == true
         "X"
+      elsif empty? == false && @cell_health == 0
+        "H"
       elsif empty? == false
         "S"
     end
