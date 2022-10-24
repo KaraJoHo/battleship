@@ -53,6 +53,10 @@ RSpec.describe do
             expect(board.valid_placement?(submarine, ["A2", "A3", "A4"])).to eq(false)
             expect(board.valid_placement?(cruiser, ["B1", "C1", "D1"])).to eq(true)
             expect(board.valid_placement?(cruiser, ["A1", "B2", "C3"])).to eq(false)
+            expect(board.valid_placement?(cruiser, ["A1", "C1", "D1"])).to eq(false)
+            expect(board.valid_placement?(submarine, ["A1", "C1"])).to eq(false)
+            expect(board.valid_placement?(cruiser, ["A1", "B1", "D1"])).to eq(false)
+
 
         end
 
@@ -130,6 +134,7 @@ RSpec.describe do
 
         expect(board.render).to eq ("  1 2 3 4 \nA S S S . \nB . . . . \nC S . . . \nD S . . . \n")
       end 
+
 
       it 'will show multiple ships current status' do
         board = Board.new

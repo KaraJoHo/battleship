@@ -36,6 +36,7 @@ class Board
     range_array_x = ("1".."4").to_a
 
     xcoordinates = coordinates.map do|coord|
+      # require 'pry'; binding.pry
       coord.chars()[1]
     end
 
@@ -61,8 +62,10 @@ class Board
     end
 
     if ship.length == coordinates.length && cell_empty_in_board.all? {|bool| bool == true}
-      valid_range_x.include?(xcoordinates) || valid_range_y.include?(ycoordinates)
-      all_letters_same.length == ship.length || all_numbers_same.length == ship.length
+      # all_letters_same.length == ship.length || all_numbers_same.length == ship.length
+      # # valid_range_x.include?(xcoordinates) || valid_range_y.include?(ycoordinates)
+      valid_range_x.include?(xcoordinates) && all_letters_same.length == ship.length  || 
+      valid_range_y.include?(ycoordinates) && all_numbers_same.length == ship.length
 
     else
       false
