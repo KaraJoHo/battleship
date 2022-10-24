@@ -56,7 +56,6 @@ RSpec.describe do
 
         end
 
-
     end
     describe '#place' do
       it 'places a ship on the board' do
@@ -66,7 +65,6 @@ RSpec.describe do
         cell_2 = board.cells["A2"]
         cell_3 = board.cells["A3"]
         board.place(cruiser, ["A1", "A2", "A3"])
-
 
         expect(cell_3.empty?).to eq(false)
       end
@@ -79,11 +77,35 @@ RSpec.describe do
         board.place(cruiser, ["A1", "A2", "A3"])
         submarine = Ship.new("Submarine", 2)
 
-        require 'pry' ;binding.pry
-
         board.valid_placement?(submarine, ["A1", "B1"])
         expect(board.valid_placement?(submarine, ["A1", "B1"])).to eq(false)
 
+      end
+    end
+
+    describe '#render' do
+      it ' will create a string respresentation of the board to display to the user all of the cells in a grid form' do
+        board = Board.new
+        cruiser = Ship.new("Cruiser", 3)
+
+        expect(board.render).to eq("  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n")
+
+        board.place(cruiser, ["A1", "A2", "A3"])
+
+        #require 'pry' ;binding.pry
+        expect(board.render).to eq("  1 2 3 4 \nA S S S . \nB . . . . \nC . . . . \nD . . . . \n")
+      end
+
+      it 'will see if it hit a ship' do
+        board = Board.new
+        cruiser = Ship.new("Cruiser", 3)
+
+        board.place(cruiser, ["A1", "A2", "A3"])
+        board.cells["A1"].fire_upon
+        expect(board.render).to eq("  1 2 3 4 \nA H S S . \nB . . . . \nC . . . . \nD . . . . \n")
+
+        board.cells["A2"].fire_upon
+        expect(board.render).to eq("  1 2 3 4 \nA H H S . \nB . . . . \nC . . . . \nD . . . . \n")
       end
     end
 
