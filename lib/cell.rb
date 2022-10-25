@@ -40,42 +40,16 @@ class Cell
 
   def render(args = false)
 
-    if empty? == false && @ship.sunk? == true 
+    if empty? == false && @ship.sunk? == true
     "X"
     elsif  empty? == false && cell_health == 0
       "H"
-    elsif args == true && empty? == false  
+    elsif args == true && empty? == false
       "S"
     elsif empty? == true && cell_health == 0
       "M"
-    else empty? == true || empty? == false 
+    else empty? == true || empty? == false
         "."
-
-   
-      
-      # elsif empty? == true && @cell_health == 0
-      #   "M"
-      # elsif empty? == false && @ship.sunk? == true
-      #   "X"
-      # elsif empty? == false && @cell_health == 0
-      #   "H"
-      # elsif empty? == false && args == true 
-      #   "S"
     end
-
-
-    # if arg == true
-    #   if empty? == true && @cell_health == 1
-    #   "."
-    #   elsif empty? == true && @cell_health == 0
-    #     "M"
-    #   elsif empty? == false && @ship.sunk? == true
-    #     "X"
-    #   elsif empty? == false && @cell_health == 0
-    #     "H"
-    #   elsif empty? == false
-    #     "."
-    #   end
-    # end  
-  end 
+  end
 end

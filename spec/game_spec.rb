@@ -8,8 +8,8 @@ RSpec.describe Game do
     describe '#initialize' do
         it 'will test to see if possible placements have been generated' do
         game = Game.new
-        computer_board = Board.new
-          game.computer_board
+        computers_board = Board.new
+          game.computers_board
         expect(game).to be_a(Game)
         end
     end
@@ -21,4 +21,15 @@ RSpec.describe Game do
         game.user_board
       end
     end
+    describe '#turn' do
+      it 'users the boardajskfbnjgf' do
+        game = Game.new
+        users_board = Board.new
+        computers_board = Board.new
+        game.user_board
+        game.computer_board
+        game.turn
+      end
+    end
+
 end
