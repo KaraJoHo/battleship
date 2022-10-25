@@ -83,13 +83,18 @@ class Board
     end
   end
 
-  def render(arg = false)
+  def render(args = false)
 
     "  1 2 3 4 \n" +
-    "A #{@cells["A1"].render} #{@cells["A2"].render} #{@cells["A3"].render} #{@cells["A4"].render} \n" +
-    "B #{@cells["B1"].render} #{@cells["B2"].render} #{@cells["B3"].render} #{@cells["B4"].render} \n" +
-    "C #{@cells["C1"].render} #{@cells["C2"].render} #{@cells["C3"].render} #{@cells["C4"].render} \n" +
-    "D #{@cells["D1"].render} #{@cells["D2"].render} #{@cells["D3"].render} #{@cells["D4"].render} \n"
+    "A #{@cells["A1"].render(args)} #{@cells["A2"].render(args)} #{@cells["A3"].render(args)} #{@cells["A4"].render(args)} \n" +
+    "B #{@cells["B1"].render(args)} #{@cells["B2"].render(args)} #{@cells["B3"].render(args)} #{@cells["B4"].render(args)} \n" +
+    "C #{@cells["C1"].render(args)} #{@cells["C2"].render(args)} #{@cells["C3"].render(args)} #{@cells["C4"].render(args)} \n" +
+    "D #{@cells["D1"].render(args)} #{@cells["D2"].render(args)} #{@cells["D3"].render(args)} #{@cells["D4"].render(args)} \n"
 
+  #  if (arg = true)
+  #   if @cells.empty? == false
+  #   "."
+  #  end 
+  # end 
   end
 end

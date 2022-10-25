@@ -96,8 +96,8 @@ RSpec.describe do
 
         board.place(cruiser, ["A1", "A2", "A3"])
 
-        #require 'pry' ;binding.pry
-        expect(board.render).to eq("  1 2 3 4 \nA S S S . \nB . . . . \nC . . . . \nD . . . . \n")
+        # require 'pry' ;binding.pry
+        expect(board.render(true)).to eq("  1 2 3 4 \nA S S S . \nB . . . . \nC . . . . \nD . . . . \n")
       end
 
       it 'will see if it hit a ship' do
@@ -106,10 +106,10 @@ RSpec.describe do
 
         board.place(cruiser, ["A1", "A2", "A3"])
         board.cells["A1"].fire_upon
-        expect(board.render).to eq("  1 2 3 4 \nA H S S . \nB . . . . \nC . . . . \nD . . . . \n")
+        expect(board.render(true)).to eq("  1 2 3 4 \nA H S S . \nB . . . . \nC . . . . \nD . . . . \n")
 
         board.cells["A2"].fire_upon
-        expect(board.render).to eq("  1 2 3 4 \nA H H S . \nB . . . . \nC . . . . \nD . . . . \n")
+        expect(board.render(true)).to eq("  1 2 3 4 \nA H H S . \nB . . . . \nC . . . . \nD . . . . \n")
       end 
       it 'will check to see if a ship is sunk' do 
         board = Board.new
@@ -132,7 +132,7 @@ RSpec.describe do
         board.place(cruiser, ["A1", "A2", "A3"])
         board.place(submarine, ["C1","D1"])
 
-        expect(board.render).to eq ("  1 2 3 4 \nA S S S . \nB . . . . \nC S . . . \nD S . . . \n")
+        expect(board.render(true)).to eq ("  1 2 3 4 \nA S S S . \nB . . . . \nC S . . . \nD S . . . \n")
       end 
 
 
@@ -148,7 +148,7 @@ RSpec.describe do
         board.cells["C1"].fire_upon
         board.cells["D1"].fire_upon
 
-        expect(board.render).to eq ("  1 2 3 4 \nA H S S . \nB . . . . \nC X . . . \nD X . . . \n")
+        expect(board.render(true)).to eq ("  1 2 3 4 \nA H S S . \nB . . . . \nC X . . . \nD X . . . \n")
       end 
 
     end
