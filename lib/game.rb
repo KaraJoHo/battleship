@@ -1,21 +1,21 @@
 class Game
-  attr_reader :computer_board, :users_board
+  attr_reader :computers_board, :users_board
 
   def computer_board
-    computer_board = Board.new
+    @computers_board = Board.new
     computer_cruiser = Ship.new("Cruiser", 3)
     computer_submarine = Ship.new("Submarine", 2)
     computer_ships = [computer_cruiser, computer_submarine]
 
     computer_ships.each do |ship|
-    range = computer_board.cells.keys
+    range = computers_board.cells.keys
     popped_coords = range.sample(ship.length)
 
 
-      until computer_board.valid_placement?(ship, popped_coords)
+      until computers_board.valid_placement?(ship, popped_coords)
         popped_coords = range.sample(ship.length)
       end
-        computer_board.place(ship, popped_coords)
+        computers_board.place(ship, popped_coords)
     end
 
   end
@@ -30,7 +30,7 @@ class Game
     puts "You now need to lay out your two ships.
     The Cruiser is three units long and the Submarine is two units long."
 
-    puts users_board.render
+    puts users_board.render(true)
 
     puts "Enter the squares for the cruiser (3 spaces)"
 
@@ -40,7 +40,7 @@ class Game
 
     if users_board.valid_placement?(user_cruiser, user_coords)
       users_board.place(user_cruiser, user_coords)
-      puts users_board.render
+      puts users_board.render(true)
 
     else
       until users_board.valid_placement?(user_cruiser, user_coords)
@@ -50,7 +50,7 @@ class Game
         user_coords = input_coords.split
       end
       users_board.place(user_cruiser, user_coords)
-      puts users_board.render
+      puts users_board.render(true)
     end
 
 
@@ -63,7 +63,7 @@ class Game
 
     if users_board.valid_placement?(user_submarine, user_coords)
       users_board.place(user_submarine, user_coords)
-      puts users_board.render
+      puts users_board.render(true)
 
     else
       until users_board.valid_placement?(user_submarine, user_coords)
@@ -73,8 +73,12 @@ class Game
         user_coords = input_coords.split
       end
       users_board.place(user_submarine, user_coords)
-      puts users_board.render
+      puts users_board.render(true)
     end
   end
+
+  def turn
+     puts computers_board.render
+  end 
 
 end
