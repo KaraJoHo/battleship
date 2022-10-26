@@ -54,7 +54,8 @@ class Game
     puts "Enter the squares for the cruiser (3 spaces) \n\n"
 
     input_coords = gets.chomp
-    user_coords = input_coords.split
+    
+    user_coords = input_coords.upcase.split
 
 
     if users_board.valid_placement?(user_cruiser, user_coords)
@@ -77,7 +78,7 @@ class Game
     puts " Enter the squares for the submarine (2 spaces)"
 
     input_coords = gets.chomp
-    user_coords = input_coords.split
+    user_coords = input_coords.upcase.split
 
 
     if users_board.valid_placement?(user_submarine, user_coords)
@@ -89,7 +90,7 @@ class Game
         puts "Those are invalid coordinates. Try again \n"
         puts "Enter the squares for the submarine (2 spaces)"
         input_coords = gets.chomp
-        user_coords = input_coords.split
+        user_coords = input_coords.upcase.split
       end
       users_board.place(user_submarine, user_coords)
       puts users_board.render(true)
@@ -110,17 +111,17 @@ class Game
 
 
       puts "Enter the coordinate of your shot! \n"
-      user_coord_input = gets.chomp
-
+      user_shot_coord = gets.chomp
+      user_coord_input = user_shot_coord.upcase 
       if computers_board.validate_coordinate?(user_coord_input) == true && computers_board.cells[user_coord_input].fired_upon? == false
-
           computers_board.cells[user_coord_input].fire_upon
 
         else
           until computers_board.validate_coordinate?(user_coord_input) == true && computers_board.cells[user_coord_input].fired_upon? == false
             puts "That is an invalid coordinate, please try again!"
             puts "Enter the coordinate for your shot"
-            user_coord_input = gets.chomp
+            user_shot_coord= gets.chomp
+            user_coord_input = user_shot_coord.upcase
           end
 
           computers_board.cells[user_coord_input].fire_upon
@@ -181,5 +182,8 @@ class Game
    end
 
   end
+
+  def ending_statement 
+    puts "Thanks for Playing"
 
 end
