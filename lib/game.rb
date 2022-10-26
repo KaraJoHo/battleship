@@ -185,5 +185,6 @@ class Game
 
   def ending_statement 
     puts "Thanks for Playing"
+  end 
 
 end
